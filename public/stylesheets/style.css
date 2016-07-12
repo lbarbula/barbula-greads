@@ -1,10 +1,10 @@
-.add {
+.book {
   display: flex;
   justify-content: center;
   align-items: center; }
-  .add button {
+  .book button {
     width: 100%; }
-  .add textarea {
+  .book textarea {
     resize: none; }
 
 input, label {

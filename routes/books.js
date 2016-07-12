@@ -10,12 +10,21 @@ router.get('/', function(req, res, next) {
 
   })
 });
+
+router.get('/delete/:id', function(req, res, next){
+  db.getBook(req.params.id)
+    .then(function(book){
+      console.log(book)
+      res.render('delete-books', {book:book})
+    })
+})
 router.get('/new', function(req,res, next){
   db.getGenre()
   .then(function (genre){
     res.render('add-book', {genre: genre})
   })
 })
+
 router.post('/new', function(req, res, next){
   db.addBook(req.body)
     .then(function(){
@@ -23,4 +32,10 @@ router.post('/new', function(req, res, next){
     })
 })
 
+router.delete('/:id', function(req,res,next){
+  db.removeBook(req.params.id)
+  .then(function(){
+    res.redirect('/books')
+  })
+})
 module.exports = router;
