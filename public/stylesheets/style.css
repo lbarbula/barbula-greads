@@ -12,4 +12,9 @@ header {
   height: 10vh;
   width: 5vw; }
 
+.cover {
+  border-radius: 50%;
+  height: 20vh;
+  width: 10vw; }
+
 /*# sourceMappingURL=style.css.map */

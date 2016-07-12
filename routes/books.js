@@ -1,9 +1,14 @@
 var express = require('express');
 var router = express.Router();
+var db = require('../db/api')
 
 /* GET users listing. */
 router.get('/', function(req, res, next) {
-  res.send('respond with a resource');
+  db.listBooks()
+  .then(function(books){
+    res.render('list-books', {books: books});
+
+  })
 });
 
 module.exports = router;
