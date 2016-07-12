@@ -13,4 +13,7 @@ module.exports = {
   removeAuthor: (id) => {
     return knex('author').del().where('id', id)
   },
+  editAuthor: (id, body) => {
+    return knex('author').where('author.id', id).update(body)
+  }
 }

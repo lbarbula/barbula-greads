@@ -1,0 +1,14 @@
+<section class="author">
+<form method="POST" action="/authors/{{author.id}}/?_method=PUT">
+    <label for="first_name">Book Name</label>
+    <input id="first_name" type="text" name="first_name" value="{{author.first_name}}">
+    <label for="last_name">Book Description</label>
+    <input type="hidden" name="genre_id" value="{{book.genre_id}}">
+    <textarea id="last_name" rows="5" name="last_name">
+      {{author.biography}}
+    </textarea>
+    <label for="portrait_url">Cover Image URL</label>
+    <input id="portrait_url" type="url" name="portrait_url" value="{{author.portrait_url}}">
+    <button type="submit">Submit</button>
+  </form>
+</section>

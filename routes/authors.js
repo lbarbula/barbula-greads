@@ -17,6 +17,13 @@ router.get('/delete/:id', function(req, res, next){
     })
 })
 
+router.get('/edit/:id', function(req, res, next){
+  db.getAuthor(req.params.id)
+  .then(function(author){
+    res.render('authors/edit-authors',  {author: author})
+  })
+})
+
 router.get('/new', function(req, res, next){
   res.render('authors/add-authors')
 })
@@ -26,6 +33,13 @@ router.delete('/:id', function(req,res,next){
   .then(function(){
     res.redirect('/authors')
   })
+})
+
+router.put('/:id', function(req, res, next){
+  db.editAuthor(req.params.id, req.body)
+    .then(function(){
+      res.redirect('/authors')
+    })
 })
 
 router.post('/new', function(req, res, next){
