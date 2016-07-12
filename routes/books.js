@@ -18,6 +18,13 @@ router.get('/delete/:id', function(req, res, next){
       res.render('delete-books', {book:book})
     })
 })
+
+router.get('/edit/:id', function(req, res, next){
+  db.getBook(req.params.id)
+  .then(function(book){
+    res.render('edit-books',  {book: book})
+  })
+})
 router.get('/new', function(req,res, next){
   db.getGenre()
   .then(function (genre){
@@ -37,5 +44,12 @@ router.delete('/:id', function(req,res,next){
   .then(function(){
     res.redirect('/books')
   })
+})
+
+router.put('/:id', function(req, res, next){
+  db.editBook(req.params.id, req.body)
+    .then(function(){
+      res.redirect('/books')
+    })
 })
 module.exports = router;

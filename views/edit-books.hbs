@@ -1,0 +1,14 @@
+<section class="book">
+<form method="POST" action="/books/{{book.id}}/?_method=PUT">
+    <label for="book_name">Book Name</label>
+    <input id="book_name" type="text" name="book_name" placeholder="{{book.book_name}}">
+    <label for="book_description">Book Description</label>
+    <input type="hidden" name="genre_id" value="{{book.genre_id}}">
+    <textarea id="book_description" rows="5" name="book_description">
+      {{book.book_description}}
+    </textarea>
+    <label for="coer_url">Cover Image URL</label>
+    <input id="cover_url" type="url" name="cover_url" value="{{book.cover_url}}">
+    <button type="submit">Submit</button>
+  </form>
+</section>
