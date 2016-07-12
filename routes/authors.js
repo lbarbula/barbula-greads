@@ -24,6 +24,13 @@ router.get('/edit/:id', function(req, res, next){
   })
 })
 
+router.get('/details/:id', function(req, res, next){
+  db.getAuthor(req.params.id)
+    .then(function(author){
+      res.render('authors/details-authors', {author: author})
+    })
+})
+
 router.get('/new', function(req, res, next){
   res.render('authors/add-authors')
 })
