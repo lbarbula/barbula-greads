@@ -1,3 +1,21 @@
-body {
-  background-color: red;
+.add {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  button {
+    width: 100%;
+  }
+  textarea {
+    resize: none;
+  }
+}
+
+input, label {
+  display: block;
+  margin-bottom: .5rem;
+  margin-top: .5rem;
+}
+
+select {
+  width: 100%;
 }

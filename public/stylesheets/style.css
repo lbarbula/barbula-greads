@@ -1,5 +1,19 @@
-body {
-  background-color: red; }
+.add {
+  display: flex;
+  justify-content: center;
+  align-items: center; }
+  .add button {
+    width: 100%; }
+  .add textarea {
+    resize: none; }
+
+input, label {
+  display: block;
+  margin-bottom: .5rem;
+  margin-top: .5rem; }
+
+select {
+  width: 100%; }
 
 header {
   display: flex;
