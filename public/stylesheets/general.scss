@@ -9,3 +9,7 @@
   height: 50vh;
   width: 25vw;
 }
+
+.portrait {
+  @extend .cover;
+}

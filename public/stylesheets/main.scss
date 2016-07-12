@@ -22,3 +22,7 @@ select {
  a{
    text-decoration: none;
  }
+ 
+ .author {
+   @extend .book;
+ }

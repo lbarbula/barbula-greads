@@ -1,10 +1,10 @@
-.book {
+.book, .author {
   display: flex;
   justify-content: center;
   align-items: center; }
-  .book button {
+  .book button, .author button {
     width: 100%; }
-  .book textarea {
+  .book textarea, .author textarea {
     resize: none; }
 
 input, label {
@@ -29,7 +29,7 @@ header {
   height: 10vh;
   width: 5vw; }
 
-.cover {
+.cover, .portrait {
   border-radius: 50%;
   height: 20vh;
   width: 10vw; }

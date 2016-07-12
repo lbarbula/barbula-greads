@@ -1,12 +1,12 @@
 var express = require('express');
 var router = express.Router();
-var db = require('../db/api')
+var db = require('../db/connectBooks')
 
 /* GET users listing. */
 router.get('/', function(req, res, next) {
   db.listBooks()
   .then(function(books){
-    res.render('list-books', {books: books});
+    res.render('books/list-books', {books: books});
 
   })
 });
@@ -15,28 +15,28 @@ router.get('/delete/:id', function(req, res, next){
   db.getBook(req.params.id)
     .then(function(book){
       console.log(book)
-      res.render('delete-books', {book:book})
+      res.render('books/delete-books', {book:book})
     })
 })
 
 router.get('/edit/:id', function(req, res, next){
   db.getBook(req.params.id)
   .then(function(book){
-    res.render('edit-books',  {book: book})
+    res.render('books/edit-books',  {book: book})
   })
 })
 
 router.get('/details/:id', function(req, res, next){
   db.getBook(req.params.id)
     .then(function(book){
-      res.render('details-books', {book: book})
+      res.render('books/details-books', {book: book})
     })
 })
 
 router.get('/new', function(req,res, next){
   db.getGenre()
   .then(function (genre){
-    res.render('add-book', {genre: genre})
+    res.render('books/add-book', {genre: genre})
   })
 })
 
