@@ -3,8 +3,12 @@
 	"file": "style.css",
 	"sources": [
 		"style.scss",
-		"main.scss"
+		"colors.scss",
+		"typography.scss",
+		"main.scss",
+		"headers.scss",
+		"general.scss"
 	],
-	"mappings": "ACAA,AAAA,IAAI,CAAC;EACH,gBAAgB,EAAE,GAAI,GACvB",
+	"mappings": "AGAA,AAAA,IAAI,CAAC;EACH,gBAAgB,EAAE,GAAI,GACvB;;ACFD,AAAA,MAAM,CAAC;EACL,OAAO,EAAE,IAAK;EACd,eAAe,EAAE,UAAW;EAC5B,gBAAgB,EHIL,IAAG,GGAf;EAPD,AAIE,MAJI,CAIJ,EAAE,CAAC;IACD,KAAK,EHLD,IAAI,GGMT;;AAGH,AAAA,KAAK,CAAC;EACJ,MAAM,EAAE,IAAK;EACb,KAAK,EAAE,GAAI,GACZ",
 	"names": []
 }

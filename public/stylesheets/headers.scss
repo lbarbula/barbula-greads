@@ -1,0 +1,13 @@
+header {
+  display: flex;
+  justify-content: flex-start;
+  background-color: $light-grey;
+  h1 {
+    color: $white;
+  }
+}
+
+.logo {
+  height: 10vh;
+  width: 5vw;
+}
