@@ -15,6 +15,9 @@ input, label {
 select {
   width: 100%; }
 
+a {
+  text-decoration: none; }
+
 header {
   display: flex;
   justify-content: flex-start;
@@ -30,5 +33,10 @@ header {
   border-radius: 50%;
   height: 20vh;
   width: 10vw; }
+
+.mainImage {
+  border-radius: 50%;
+  height: 50vh;
+  width: 25vw; }
 
 /*# sourceMappingURL=style.css.map */

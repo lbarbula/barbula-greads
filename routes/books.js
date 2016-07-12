@@ -25,6 +25,14 @@ router.get('/edit/:id', function(req, res, next){
     res.render('edit-books',  {book: book})
   })
 })
+
+router.get('/details/:id', function(req, res, next){
+  db.getBook(req.params.id)
+    .then(function(book){
+      res.render('details-books', {book: book})
+    })
+})
+
 router.get('/new', function(req,res, next){
   db.getGenre()
   .then(function (genre){
