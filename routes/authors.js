@@ -9,9 +9,25 @@ router.get('/', function(req, res, next){
     })
 })
 
+router.get('/delete/:id', function(req, res, next){
+  db.getAuthor(req.params.id)
+    .then(function(author){
+      console.log(author)
+      res.render('authors/delete-authors', {author:author})
+    })
+})
+
 router.get('/new', function(req, res, next){
   res.render('authors/add-authors')
 })
+
+router.delete('/:id', function(req,res,next){
+  db.removeAuthor(req.params.id)
+  .then(function(){
+    res.redirect('/authors')
+  })
+})
+
 router.post('/new', function(req, res, next){
   db.addAuthor(req.body)
   .then(function(){
