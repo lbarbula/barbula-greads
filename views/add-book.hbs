@@ -1,0 +1,12 @@
+<section class="add">
+  <form action="/books/new" method="POST">
+    <input id="book_name" type="text" name="book_name">
+    <select id="book_genre" name="genre_id">
+      {{#each genre}}
+      <option value="{{this.id}}">{{this.name}}</option>
+      {{/each}}
+    </select>
+    <textarea id="book_description" rows="5" name="book_description"></textarea>
+    <input id="cover_url" type="url" name="cover_url">
+    <button type="submit">Submit</button>
+  </form>

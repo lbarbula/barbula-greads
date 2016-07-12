@@ -10,5 +10,17 @@ router.get('/', function(req, res, next) {
 
   })
 });
+router.get('/new', function(req,res, next){
+  db.getGenre()
+  .then(function (genre){
+    res.render('add-book', {genre: genre})
+  })
+})
+router.post('/new', function(req, res, next){
+  db.addBook(req.body)
+    .then(function(){
+      res.redirect('/books')
+    })
+})
 
 module.exports = router;
