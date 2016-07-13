@@ -4,7 +4,8 @@ var _ = require('lodash')
 module.exports = {
   listBooks: function () {
     return knex('book').select()
-
+      .join('genre', 'genre.id', 'book.genre_id')
+      .select('book.id', 'book.book_name', 'book.cover_url', 'book.book_description', 'genre.name as genreName')
   },
   listBooksAuthors: function (id) {
     return knex('author')
@@ -38,16 +39,7 @@ module.exports = {
       })
     })
   },
-//   addPlaceToDo: function(body, userid){
-//   return knex('place').insert(body, 'id')
-//   .then(function(id){
-//     return knex('client_place').insert({
-//       client_id: userid,
-//       place_id: id[0],
-//       have_visited: false
-//     })
-//   })
-// },
+
   getBookWithAuthors: (id) => {
     return Promise.all([
       knex('book').where('id', id).first(),

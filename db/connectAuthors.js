@@ -26,8 +26,14 @@ module.exports = {
       })
 
 },
-  addAuthor: function (body) {
-    return knex('author').insert(body)
+  addAuthor: function (body, bookId) {
+    return knex('author').insert(body, 'id')
+    .then(function(id){
+      return knex('author_book').insert({
+        author_id: id[0],
+        book_id: bookId
+      })
+    })
   },
   getAuthorWithBooks: (id) => {
     return Promise.all([

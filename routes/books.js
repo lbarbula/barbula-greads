@@ -10,9 +10,7 @@ router.get('/', function(req, res, next) {
     return Promise.all(data)
   })
   .then(function(results){
-    console.log(results)
-    // console.log(data[1][0].first_name)
-    // console.log(data[1][0].id)
+    console.log(results);
     res.render('books/list-books',
     {
       books: results
@@ -62,7 +60,9 @@ router.get('/new', function(req,res, next){
 router.post('/new', function(req, res, next){
   let book = {
     book_name: req.body.book_name,
-
+    genre_id: req.body.genre_id,
+    book_description: req.body.book_description,
+    cover_url: req.body.cover_url
   }
   let authorId = req.body.author_id
   db.addBook(book, authorId)

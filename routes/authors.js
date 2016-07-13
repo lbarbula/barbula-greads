@@ -1,6 +1,7 @@
 var express = require('express');
 var router = express.Router();
 var db = require('../db/connectAuthors')
+var book = require('../db/connectBooks')
 
 router.get('/', function(req, res, next){
   db.addBooksToAuthor()
@@ -46,7 +47,11 @@ router.get('/details/:id', function(req, res, next){
 })
 
 router.get('/new', function(req, res, next){
-  res.render('authors/add-authors')
+  book.listBooks()
+  .then(function(book){
+    console.log(book)
+    res.render('authors/add-authors', {book: book})
+  })
 })
 
 router.delete('/:id', function(req,res,next){
@@ -64,7 +69,14 @@ router.put('/:id', function(req, res, next){
 })
 
 router.post('/new', function(req, res, next){
-  db.addAuthor(req.body)
+  let author = {
+    first_name: req.body.first_name,
+    last_name: req.body.last_name,
+    biography: req.body.biography,
+    portrait_url: req.body.portrait_url
+  }
+  let bookId = req.body.book_id
+  db.addAuthor(author, bookId)
   .then(function(){
     res.redirect('/authors')
   })
