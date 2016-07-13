@@ -69,13 +69,13 @@ router.put('/:id', function(req, res, next){
 })
 
 router.post('/new', function(req, res, next){
-  let author = {
+  var author = {
     first_name: req.body.first_name,
     last_name: req.body.last_name,
     biography: req.body.biography,
     portrait_url: req.body.portrait_url
   }
-  let bookId = req.body.book_id
+  var bookId = req.body.book_id
   db.addAuthor(author, bookId)
   .then(function(){
     res.redirect('/authors')

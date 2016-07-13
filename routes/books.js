@@ -58,13 +58,13 @@ router.get('/new', function(req,res, next){
 })
 
 router.post('/new', function(req, res, next){
-  let book = {
+  var book = {
     book_name: req.body.book_name,
     genre_id: req.body.genre_id,
     book_description: req.body.book_description,
     cover_url: req.body.cover_url
   }
-  let authorId = req.body.author_id
+  var authorId = req.body.author_id
   db.addBook(book, authorId)
     .then(function(){
       console.log(req.body)
