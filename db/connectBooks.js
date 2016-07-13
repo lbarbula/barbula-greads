@@ -25,7 +25,6 @@ module.exports = {
           })
         })
       })
-
 },
   getGenre: () => {
     return knex('genre')

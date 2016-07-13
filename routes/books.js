@@ -67,7 +67,6 @@ router.post('/new', function(req, res, next){
   var authorId = req.body.author_id
   db.addBook(book, authorId)
     .then(function(){
-      console.log(req.body)
       res.redirect('/books')
     })
 })
