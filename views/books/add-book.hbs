@@ -8,6 +8,12 @@
       <option value="{{this.id}}">{{this.name}}</option>
       {{/each}}
     </select>
+    <label for="author">Author</label>
+    <select id="author" name="author_id">
+      {{#each author}}
+      <option value="{{this.id}}">{{this.first_name}} {{this.last_name}}</option>
+      {{/each}}
+    </select>
     <label for="book_description">Book Description</label>
     <textarea id="book_description" rows="5" name="book_description">
       Enter Description Here

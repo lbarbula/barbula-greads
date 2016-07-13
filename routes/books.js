@@ -1,6 +1,7 @@
 var express = require('express');
 var router = express.Router();
 var db = require('../db/connectBooks')
+var author = require('../db/connectAuthors')
 
 /* GET users listing. */
 router.get('/', function(req, res, next) {
@@ -49,15 +50,24 @@ router.get('/details/:id', function(req, res, next){
 })
 
 router.get('/new', function(req,res, next){
-  db.getGenre()
-  .then(function (genre){
-    res.render('books/add-book', {genre: genre})
+  return Promise.all([
+    db.getGenre(),
+    author.listAuthors()
+  ])
+  .then(function (data){
+    res.render('books/add-book', {genre: data[0], author:data[1]})
   })
 })
 
 router.post('/new', function(req, res, next){
-  db.addBook(req.body)
+  let book = {
+    book_name: req.body.book_name,
+
+  }
+  let authorId = req.body.author_id
+  db.addBook(book, authorId)
     .then(function(){
+      console.log(req.body)
       res.redirect('/books')
     })
 })

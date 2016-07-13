@@ -29,9 +29,25 @@ module.exports = {
   getGenre: () => {
     return knex('genre')
   },
-  addBook: (body) => {
-    return knex('book').insert(body)
+  addBook: (body, authorId) => {
+    return knex('book').insert(body, 'id')
+    .then(function(id){
+      return knex('author_book').insert({
+        author_id: authorId,
+        book_id: id[0]
+      })
+    })
   },
+//   addPlaceToDo: function(body, userid){
+//   return knex('place').insert(body, 'id')
+//   .then(function(id){
+//     return knex('client_place').insert({
+//       client_id: userid,
+//       place_id: id[0],
+//       have_visited: false
+//     })
+//   })
+// },
   getBookWithAuthors: (id) => {
     return Promise.all([
       knex('book').where('id', id).first(),
@@ -40,9 +56,9 @@ module.exports = {
         return knex('author_book').where({
           book_id: book.id
         }).pluck('author_id')
-      }).then(function(ids){
+        }).then(function(ids){
         return knex('author').whereIn('id', ids)
-      }).then(function(results){
+        }).then(function(results){
         return results;
       })
     ])
