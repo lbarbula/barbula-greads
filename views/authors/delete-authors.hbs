@@ -3,4 +3,7 @@
   <form method="POST" action="/authors/{{author.id}}?_method=DELETE">
     <input class="delete" type="submit" value="Delete {{author.first_name}} {{author.last_name}}?">
   </form>
+  {{#each book}}
+    <a href="/books/details/{{this.id}}"><p>{{this.book_name}}</p></a>
+  {{/each}}
 </section>

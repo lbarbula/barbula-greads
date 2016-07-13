@@ -3,17 +3,27 @@ var router = express.Router();
 var db = require('../db/connectAuthors')
 
 router.get('/', function(req, res, next){
-  db.listAuthors()
-    .then(function(author){
-      res.render('authors/list-authors', {author: author})
+  db.addBooksToAuthor()
+  .then(function (data){
+    return Promise.all(data)
+  })
+    .then(function(results){
+      console.log(results[0].books)
+      res.render('authors/list-authors',
+      {
+        author: results
+      })
     })
 })
 
 router.get('/delete/:id', function(req, res, next){
-  db.getAuthor(req.params.id)
-    .then(function(author){
-      console.log(author)
-      res.render('authors/delete-authors', {author:author})
+  db.getAuthorWithBooks(req.params.id)
+    .then(function(data){
+      res.render('authors/delete-authors',
+      {
+        author: data[0],
+        book: data[1]
+      })
     })
 })
 
@@ -25,9 +35,13 @@ router.get('/edit/:id', function(req, res, next){
 })
 
 router.get('/details/:id', function(req, res, next){
-  db.getAuthor(req.params.id)
-    .then(function(author){
-      res.render('authors/details-authors', {author: author})
+  db.getAuthorWithBooks(req.params.id)
+    .then(function(data){
+      res.render('authors/details-authors',
+      {
+        author: data[0],
+        book: data[1]
+      })
     })
 })
 

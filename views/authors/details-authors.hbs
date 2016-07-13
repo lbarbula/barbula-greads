@@ -3,6 +3,9 @@
     <p>{{author.first_name}}</p>
     <p>{{author.last_name}}</p>
     <p>{{author.biography}}</p>
+    {{#each book}}
+      <a href="/books/details/{{this.id}}"><p>{{this.book_name}}</p></a>
+    {{/each}}
     <img class="mainImage" src="{{author.portrait_url}}">
   </div>
 </section>

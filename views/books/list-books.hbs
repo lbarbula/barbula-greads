@@ -1,4 +1,4 @@
-<ul>
+
   {{#each books}}
   <div>
     <a href="/books/details/{{this.id}}"><p>{{this.bookName}}</p></a>
@@ -7,6 +7,8 @@
     <img class="cover" src="{{this.cover_url}}">
     <a href="/books/delete/{{this.id}}"><i class="fa fa-remove"></i></a>
     <a href="/books/edit/{{this.id}}"><button type="button">Edit Book</button></a>
+    {{#each authors}}
+    <a href="/authors/details/{{this.authorId}}"><p>{{this.first_name}} {{this.last_name}}</p></a>
+    {{/each}}
   </div>
   {{/each}}
-</ul>

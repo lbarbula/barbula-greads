@@ -1,14 +1,48 @@
 var knex = require('./knex')
+var _ = require('lodash')
 
 module.exports = {
-  listAuthors: () => {
-    return knex('author')
+  listAuthors: function () {
+    return knex('author').select()
+
   },
-  addAuthor: (body) => {
+  listBooksAuthors: function (id) {
+    return knex('book')
+      .join('author_book', 'book.id', 'book_id')
+      .where('author_id', id)
+      .select('book.id as bookId', 'book.book_name')
+  },
+
+  addBooksToAuthor: function () {
+    return this.listAuthors()
+      .then((returnedAuthor) => {
+        return returnedAuthor.map((author) => {
+          return this.listBooksAuthors(author.id)
+          .then(function(books){
+            author.books = books
+            return author
+          })
+        })
+      })
+
+},
+  addAuthor: function (body) {
     return knex('author').insert(body)
   },
-  getAuthor: (id) => {
-    return knex('author').where('id', id).first()
+  getAuthorWithBooks: (id) => {
+    return Promise.all([
+      knex('author').where('id', id).first(),
+      knex('author').where('author.id', id).first()
+      .then(function(author){
+        return knex('author_book').where({
+          author_id: author.id
+        }).pluck('book_id')
+      }).then(function(ids){
+        return knex('book').whereIn('id', ids)
+      }).then(function(results){
+        return results;
+      })
+    ])
   },
   removeAuthor: (id) => {
     return knex('author').del().where('id', id)

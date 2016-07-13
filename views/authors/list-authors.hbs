@@ -1,8 +1,11 @@
   {{#each author}}
   <div>
-    <a href="/authors/details/{{this.id}}"><p>{{this.first_name}} {{this.last_name}}</p></a>
+    <a href="/authors/details/{{this.authorId}}"><p>{{this.first_name}} {{this.last_name}}</p></a>
     <p>{{this.biography}}</p>
     <img class="portrait" src="{{this.portrait_url}}">
+    {{#each books}}
+      <a href="/books/details/{{this.bookId}}"><p>{{this.book_name}}</p></a>
+    {{/each}}
     <a href="/authors/delete/{{this.id}}"><i class="fa fa-remove"></i></a>
     <a href="/authors/edit/{{this.id}}"><button type="button">Edit Author</button></a>
   </div>

@@ -4,18 +4,29 @@ var db = require('../db/connectBooks')
 
 /* GET users listing. */
 router.get('/', function(req, res, next) {
-  db.listBooks()
-  .then(function(books){
-    res.render('books/list-books', {books: books});
-
+  db.addAuthorsToBook()
+  .then(function(data){
+    return Promise.all(data)
+  })
+  .then(function(results){
+    console.log(results)
+    // console.log(data[1][0].first_name)
+    // console.log(data[1][0].id)
+    res.render('books/list-books',
+    {
+      books: results
+    });
   })
 });
 
 router.get('/delete/:id', function(req, res, next){
-  db.getBook(req.params.id)
-    .then(function(book){
-      console.log(book)
-      res.render('books/delete-books', {book:book})
+  db.getBookWithAuthors(req.params.id)
+    .then(function(data){
+      res.render('books/delete-books',
+      {
+        book:data[0],
+        author:data[1]
+      })
     })
 })
 
@@ -27,9 +38,13 @@ router.get('/edit/:id', function(req, res, next){
 })
 
 router.get('/details/:id', function(req, res, next){
-  db.getBook(req.params.id)
-    .then(function(book){
-      res.render('books/details-books', {book: book})
+  db.getBookWithAuthors(req.params.id)
+    .then(function(data){
+      res.render('books/details-books',
+      {
+        book: data[0],
+        author: data[1]
+      })
     })
 })
 
