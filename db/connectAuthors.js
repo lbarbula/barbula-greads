@@ -26,7 +26,7 @@ module.exports = {
       })
 
 },
-  addAuthor: function (body, bookId) {
+  addAuthor: (body, bookId) => {
     return knex('author').insert(body, 'id')
     .then(function(id){
       return knex('author_book').insert({
