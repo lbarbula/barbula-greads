@@ -1,5 +1,5 @@
-Link to Website [Barbula-Galvanize Reads](https://quiet-island-59677.herokuapp.com/) 
-
+Link to Website [Barbula-Galvanize Reads](https://quiet-island-59677.herokuapp.com/)
+Link to Pivotal Tracker [Greads](https://www.pivotaltracker.com/n/projects/1656201)
 # Galvanize Reads
 
 Galvanize Reads is a book catalog service that stores a list of recommended technology books. You are building a web app for them. It should allow you to:
