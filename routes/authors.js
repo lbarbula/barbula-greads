@@ -9,7 +9,7 @@ router.get('/', function(req, res, next){
     return Promise.all(data)
   })
     .then(function(results){
-      console.log(results[0].books)
+      console.log(results[0].portrait_url)
       res.render('authors/list-authors',
       {
         author: results
@@ -68,6 +68,7 @@ router.delete('/:id', function(req,res,next){
 router.put('/:id', function(req, res, next){
   db.editAuthor(req.params.id, req.body)
     .then(function(){
+      console.log(req.body)
       res.redirect('/authors')
     })
 })
