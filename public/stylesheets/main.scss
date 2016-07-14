@@ -1,9 +1,12 @@
 .book {
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
-  button {
+  height: 80vh;
+  input {
     width: 100%;
+    background-color: $failure;
   }
   textarea {
     resize: none;
@@ -22,7 +25,41 @@ select {
  a{
    text-decoration: none;
  }
- 
+
  .author {
    @extend .book;
  }
+
+.display {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
+.profile {
+  border: 1px solid black;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 30%;
+  height: auto;
+  margin: 1rem;
+  padding: .5rem;
+  border-radius: 5px;
+  box-shadow: 2px 2px $dark-grey;
+  i {
+    color: $failure;
+  }
+}
+footer {
+    height: 20%;
+    display: flex;
+    justify-content: center;
+    button {
+      width: 10rem;
+      background-color: $galvanize-primary;
+      &:hover {
+        cursor: pointer;
+      }
+  }
+}

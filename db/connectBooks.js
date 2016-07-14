@@ -38,7 +38,6 @@ module.exports = {
       })
     })
   },
-
   getBookWithAuthors: (id) => {
     return Promise.all([
       knex('book').where('id', id).first(),

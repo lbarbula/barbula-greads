@@ -1,5 +1,6 @@
+<div class="display">
   {{#each author}}
-  <div>
+  <div class="profile">
     <a href="/authors/details/{{this.id}}"><p>{{this.first_name}} {{this.last_name}}</p></a>
     <p>{{this.biography}}</p>
     <img class="portrait" src="{{this.portrait_url}}">
@@ -10,3 +11,7 @@
     <a href="/authors/edit/{{this.id}}"><button type="button">Edit Author</button></a>
   </div>
   {{/each}}
+</div>
+<footer>
+  <a href="/authors/new"><button type="button">Add a Author</button></a>
+</footer>

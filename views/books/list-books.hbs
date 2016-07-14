@@ -1,6 +1,6 @@
-
+<div class="display">
   {{#each books}}
-  <div>
+  <div class="profile">
     <a href="/books/details/{{this.id}}"><p>{{this.book_name}}</p></a>
     <p>{{this.genreName}}</p>
     <p>{{this.book_description}}</p>
@@ -12,3 +12,7 @@
     {{/each}}
   </div>
   {{/each}}
+</div>
+<footer>
+  <a href="/books/new"><button type="button">Add a Book</button></a>
+</footer>

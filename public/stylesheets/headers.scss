@@ -11,3 +11,18 @@ header {
   height: 10vh;
   width: 5vw;
 }
+
+nav {
+  display: flex;
+  justify-content: center;
+  width: 25%;
+  margin-left: 50%;
+  margin-top: 1rem;
+  li {
+    display: inline;
+  }
+  a {
+    color: $galvanize-primary;
+    margin-left: 1rem;
+  }
+}

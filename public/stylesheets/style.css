@@ -1,9 +1,12 @@
 .book, .author {
   display: flex;
+  flex-direction: column;
   justify-content: center;
-  align-items: center; }
-  .book button, .author button {
-    width: 100%; }
+  align-items: center;
+  height: 80vh; }
+  .book input, .author input {
+    width: 100%;
+    background-color: #d94936; }
   .book textarea, .author textarea {
     resize: none; }
 
@@ -18,6 +21,35 @@ select {
 a {
   text-decoration: none; }
 
+.display {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around; }
+
+.profile {
+  border: 1px solid black;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 30%;
+  height: auto;
+  margin: 1rem;
+  padding: .5rem;
+  border-radius: 5px;
+  box-shadow: 2px 2px #4d4d4d; }
+  .profile i {
+    color: #d94936; }
+
+footer {
+  height: 20%;
+  display: flex;
+  justify-content: center; }
+  footer button {
+    width: 10rem;
+    background-color: #f79322; }
+    footer button:hover {
+      cursor: pointer; }
+
 header {
   display: flex;
   justify-content: flex-start;
@@ -28,6 +60,18 @@ header {
 .logo {
   height: 10vh;
   width: 5vw; }
+
+nav {
+  display: flex;
+  justify-content: center;
+  width: 25%;
+  margin-left: 50%;
+  margin-top: 1rem; }
+  nav li {
+    display: inline; }
+  nav a {
+    color: #f79322;
+    margin-left: 1rem; }
 
 .cover, .portrait {
   border-radius: 50%;
