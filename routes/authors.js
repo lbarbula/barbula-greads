@@ -29,9 +29,13 @@ router.get('/delete/:id', function(req, res, next){
 })
 
 router.get('/edit/:id', function(req, res, next){
-  db.getAuthor(req.params.id)
-  .then(function(author){
-    res.render('authors/edit-authors',  {author: author})
+  db.getAuthorWithBooks(req.params.id)
+  .then(function(data){
+    res.render('authors/edit-authors',
+    {
+      author: data[0],
+      book: data[1]
+    })
   })
 })
 
