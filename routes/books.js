@@ -30,9 +30,14 @@ router.get('/delete/:id', function(req, res, next){
 })
 
 router.get('/edit/:id', function(req, res, next){
-  db.getBook(req.params.id)
-  .then(function(book){
-    res.render('books/edit-books',  {book: book})
+  db.getBookWithAuthors(req.params.id)
+  .then(function(data){
+    console.log(data)
+    res.render('books/edit-books',
+    {
+      book: data[0],
+      author:data[1]
+    })
   })
 })
 

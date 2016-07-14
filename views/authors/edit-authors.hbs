@@ -8,6 +8,11 @@
     <textarea id="biography" rows="5" name="biography">
       {{author.biography}}
     </textarea>
+    <select id="book" name="book_id">
+      {{#each book}}
+        <option value="{{this.id}}">{{this.book_name}}</option>
+      {{/each}}
+    </select>
     <label for="portrait_url">Cover Image URL</label>
     <input id="portrait_url" type="url" name="portrait_url" value="{{author.portrait_url}}">
     <button type="submit">Submit</button>
