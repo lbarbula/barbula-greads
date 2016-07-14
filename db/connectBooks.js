@@ -54,7 +54,10 @@ module.exports = {
     ])
   },
   removeBook: (id) => {
-    return knex('book').del().where('id', id)
+    return knex('author_book').del().where('book_id', id)
+    .then(function(){  
+      return knex('book').del().where('id', id)
+    })
   },
   editBook: (id, body) => {
     return knex('book').where('book.id', id).update(body)
